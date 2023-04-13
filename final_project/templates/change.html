@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block title %}
+Home
+{% endblock %}
+
+{% block body %}
+
+<h3>Password change</h3>
+  <form action="/change" method="post">
+    <br>
+    <div class="mb-3">
+      <input name="old_pas1" type="password" class="form-control" id="exampleInputPassword1" placeholder="Old Password" required minlength="1" maxlength="8">
+    </div>
+    <div class="mb-3">
+      <input name="old_pas2" type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirmation" required minlength="1" maxlength="8">
+    </div>
+    <div class="mb-3">
+      <input name="new_pas" type="password" class="form-control" id="exampleInputPassword1" placeholder="New Password" required minlength="1" maxlength="8">
+    </div>
+    <button type="submit" class="btn btn-outline-warning">Save</button>
+    <br>
+  </form>
+
+
+{% endblock %}

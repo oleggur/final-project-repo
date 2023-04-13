@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block title %}
+About
+{% endblock %}
+
+{% block body %}
+<p id="about"> <br> This app allows you to track your expenses and incomes.
+    <br>
+    Start by creating some <a class="link-warning link-underline-opacity-0" href="/categories">categories</a>.
+    <br>
+    Then you can log your <a class="link-warning link-underline-opacity-0" href="/new">expenses and incomes</a>.
+    <br>
+    You can browse <a class="link-warning link-underline-opacity-0" href="/stats">statistics</a> based on your entries.
+    <br>
+    You can also <a class="link-warning link-underline-opacity-0" href="/export">export</a> your data to a csv file.
+
+</p>
+<br><br><br>
+<a id="bootstrap" href="https://getbootstrap.com/">Created with Bootstrap</a><br>
+<a id="attribution" href="https://www.flaticon.com/free-icons/money" title="money icons">Money icons created by Freepik - Flaticon</a>
+
+{% endblock %}

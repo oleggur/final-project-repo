@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block title %}
+Add Transaction
+{% endblock %}
+
+{% block body %}
+<div style="zoom: 0.9">
+<h3>Add a New Transaction</h3>
+<br>
+<form action="/new", method="post">
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="Expense" checked>
+    <label class="form-check-label" for="inlineRadio1">Expense</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="type" id="inlineRadio2" value="Income">
+    <label class="form-check-label" for="inlineRadio2">Income</label>
+  </div>
+
+  <div><br></div>
+  <div>
+    <input name="date" class="form-control" type="date" value="{{cur_date}}" aria-label="default input example" required>
+  </div>
+  <br>
+  <div class="input-group">
+    <select name="category" class="form-select" aria-label="Default select example" required autofocus>
+      {% if rows %}
+      <option selected disabled>Choose category...</option>
+      {% else %}
+      <option selected disabled>Create a category first -></option>
+      {% endif %}
+      {% for row in rows %}
+      <option value="{{row.name}}">{{row.name}}</option>
+      {% endfor %}
+    </select>
+    <button onclick="window.location.href='/categories'" class="btn btn-outline-secondary" type="button" id="button-addon2">Add new</button>
+  </div>
+  <br>
+
+  <div class="input-group">
+      <input class="form-control mx-auto w-auto" name="amount" placeholder="Amount" type="number" step=".01" required autocomplete="off" max="9999999999">
+      <select name="currency" class="form-select">
+        <option value="USD" selected>USD</option> <!-- only one currency supported for now -->
+      </select>
+  </div>
+
+<br>
+
+  <div>
+    <textarea name="note" class="form-control" aria-label="With textarea" placeholder="Note" maxlength="32"></textarea>
+  </div>
+
+
+
+<br>
+  <div>
+    <button type="submit" class="btn btn-outline-warning"><strong>ADD</strong></button>
+  </div>
+</form>
+</div>
+{% endblock %}

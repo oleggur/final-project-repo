@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block title %}
+Home
+{% endblock %}
+
+{% block body %}
+
+<h3>Logged in as: {{username}}</h3>
+<h3>Registered on: {{date}}</h3>
+<br>
+
+<!-- change password functionality -->
+
+<div>
+  <button onclick="window.location.href='/change'" class="btn btn-outline-warning">Change Password</button>
+</div>
+
+<!-- end -->
+<br>
+<!-- delete account functionality -->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Delete Account
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Warning!</h1>
+        <button id="modalClose" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Your account and all of its data will be deleted forever and cannot be restored.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Keep Account</button>
+        <button onclick="window.location.href='/profile?action=delete_account'" class="btn btn-warning"><strong>Still Delete</strong></button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end -->
+
+{% endblock %}

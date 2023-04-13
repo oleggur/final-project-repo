@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% block title %}
+Stats
+{% endblock %}
+
+{% block body %}
+
+
+  <!-- tabs -->
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link{% if type == 'expense' %} active{% else %}{% endif %}" aria-current="page" href="/stats?type=expense">Total Expenses {{ total_exp }} USD</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link{% if type == 'expense' %}{% else %} active{% endif %}" href="/stats?type=income">Total Income {{ total_inc }} USD</a>
+    </li>
+  </ul>
+  <!-- end -->
+
+
+
+
+  {% if cat %} <!-- if cat arg is provided - we show a table with the chosen category -->
+  <h4 style="color: white" id="catName">Category: {{cat}}</h4>
+    <table class="table" style="table-layout: fixed;">
+      <thead>
+        <tr>
+          <th scope="col"><a class="link-warning link-underline-opacity-0" href="/stats?type={% if type == 'expense' %}expense{% else %}income{% endif %}&cat={{cat}}&sort=date">Date</a></th>
+          <th scope="col"><a class="link-warning link-underline-opacity-0" href="/stats?type={% if type == 'expense' %}expense{% else %}income{% endif %}&cat={{cat}}&sort=type">Type</a></th>
+          <th scope="col"><a class="link-warning link-underline-opacity-0" href="/stats?type={% if type == 'expense' %}expense{% else %}income{% endif %}&cat={{cat}}&sort=amount">Amount, USD</a></th>
+          <th scope="col"><a class="link-warning link-underline-opacity-0" href="/stats?type={% if type == 'expense' %}expense{% else %}income{% endif %}&cat={{cat}}&sort=note">Note</a></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+        <tr>
+          <td>{{row.date}}</td>
+          <td>{{row.type}}</td>
+          <td>{{row.amount}}</td>
+          <td>{{row.note}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  <!-- end -->
+
+
+
+  {% else %} <!-- if no cat arg provided - we show a table with expense or income categories based on type arg -->
+  <br>
+    <table class="table" style="table-layout: fixed;">
+      <thead>
+        <tr>
+          <th scope="col"><a class="link-warning link-underline-opacity-0" href="/stats?type={{type}}&sort=category">Category</a></th>
+          <th scope="col"><a class="link-warning link-underline-opacity-0" href="/stats?type={{type}}&sort=amount">Total Amount, USD</a></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if type == "expense" %} <!-- type expense -->
+        {% for row in exp_by_type %}
+        <tr>
+          <td><a class="link-warning link-underline-opacity-0" href="/stats?cat={{row.category}}">{{row.category}}</a></td>
+          <td>{{row.amount}}</td>
+        </tr>
+        {% endfor %}
+        {% else %} <!-- if type is inc -->
+        {% for row in inc_by_type %}
+        <tr>
+          <td><a class="link-warning link-underline-opacity-0" href="/stats?type=income&cat={{row.category}}">{{row.category}}</a></td>
+          <td>{{row.amount}}</td>
+        </tr>
+        {% endfor %}
+
+        {% endif %}
+      </tbody>
+    </table>
+  <!-- end -->
+
+  {% endif %} <!-- end cat arg condition -->
+
+{% endblock %}
