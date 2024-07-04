@@ -11,6 +11,9 @@ The app was built using the following languages: Python, SQL, HTML, CSS, JavaScr
     - clone the repo `https://github.com/oleggur/final-project-repo.git` and reopen in container
     ![Devcontainer](image-1.png)
 
+### To run the app locally
+Once in devcontainer or in Codespaces, use `flask run`
+
 ### Features
 The user is first presented a login page and has an option to register on the website. Upon registration or login, the user gains access to full functionality of the website. Users are prompted to create categories for their transactions (expenses and incomes). Then they can input their transactions to keep track of them. Users can view all their transactions on the home page. Users can also conveniently delete categories or transactions. The "Stats" page contains tables based on the user-provided data. Users can also export their data to a csv file.
 
