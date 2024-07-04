@@ -1,9 +1,15 @@
 # MONEY MANAGEMENT APP
-## Video Demo:  https://youtu.be/vYZ9CPTrw5w
 ## Description:
 Hi everyone, this is my CS50x final project which is a money management web-app.
 It allows users to manage their finances by logging expenses and incomes and analyzing them using this app. The app supports personal accounts feature, so users can log in and out of the website, and all their data is stored on the server. Currently the app supports only one currency. Additional currencies may be implemented in future updates.
 The app was built using the following languages: Python, SQL, HTML, CSS, JavaScript, and Jinja. I used Flask to build the web-server and Bootstrap for most of the CSS elements on the website.
+
+## Contribute
+- Use Codespaces
+![Codespaces](image.png)
+- or use VSCode:
+    - clone the repo `https://github.com/oleggur/final-project-repo.git` and reopen in container
+    ![Devcontainer](image-1.png)
 
 ### Features
 The user is first presented a login page and has an option to register on the website. Upon registration or login, the user gains access to full functionality of the website. Users are prompted to create categories for their transactions (expenses and incomes). Then they can input their transactions to keep track of them. Users can view all their transactions on the home page. Users can also conveniently delete categories or transactions. The "Stats" page contains tables based on the user-provided data. Users can also export their data to a csv file.
