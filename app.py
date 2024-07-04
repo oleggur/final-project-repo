@@ -194,7 +194,19 @@ def new():
         amount = request.form.get("amount")
         currency = request.form.get("currency")
         note = request.form.get("note")
-        db.execute("INSERT INTO Transactions(date, user_id, type, category, amount, currency, note) VALUES(?, ?, ?, ?, ?, ?, ?);", trans_date, session["user_id"], type, category, amount, currency, note)
+
+        db.execute("""
+                   INSERT INTO Transactions(date, user_id, type, category, amount, currency, note)
+                   VALUES(?, ?, ?, ?, ?, ?, ?);""",
+                   trans_date,
+                   session["user_id"],
+                   type,
+                   category,
+                   amount,
+                   currency,
+                   note
+        )
+
         flash('Transaction added! <a href="/" class="alert-link">Back to home page<a>', 'success')
         return redirect("/new")
 
