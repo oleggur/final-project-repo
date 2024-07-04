@@ -1,5 +1,5 @@
 {
-    "name": "Flask App",
+    "name": "Money Management",
     "context": "..",
     "dockerFile": "Dockerfile",
     "appPort": [5000],
