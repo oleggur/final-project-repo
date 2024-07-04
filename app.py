@@ -304,7 +304,7 @@ def export():
         filename = f"{username}_{datetime.now().strftime('%Y-%m-%d_%H:%M:%S')}.csv"
         path = f"export/{username}/{filename}"
         if not os.path.exists(f"export/{username}"):
-            os.mkdir(f"export/{username}")
+            os.makedirs(f"export/{username}")
 
         header = to_write[0].keys()
         with open(path, "w", encoding='utf-8', newline='') as file:
